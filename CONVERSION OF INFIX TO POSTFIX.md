@@ -30,11 +30,42 @@ To write a Python program to convert a given Infix expression to Postfix express
 ### PROGRAM
 
 ```
+OPERATORS = set(['&', '-', '/', '(', ')'])
+PRIORITY = {'&': 1, '-': 2, '/': 3}
 
+def infixToPostfix(expression):
+    stack = []
+    output = ''
+
+    for character in expression:
+        if character not in OPERATORS:
+            output += character
+        elif character == '(':
+            stack.append('(')
+        elif character == ')':
+            while stack and stack[-1] != '(':
+                output += stack.pop()
+            stack.pop()  # Remove '(' from the stack
+        else:
+            while (stack and stack[-1] != '(' and
+                   PRIORITY[character] <= PRIORITY.get(stack[-1], 0)):
+                output += stack.pop()
+            stack.append(character)
+
+    while stack:
+        output += stack.pop()
+
+    return output
+
+# Input and output
+expression = input("Enter infix expression: ")
+print("Infix notation: ", expression)
+print("Postfix notation: ", infixToPostfix(expression))
 ```
 
 ### OUTPUT
+<img width="774" height="165" alt="image" src="https://github.com/user-attachments/assets/8a79d352-a90b-4540-9125-ea165f8c5d6a" />
 
 
 ### RESULT
-
+Thus the python program to convert infix to postfix expression has been implemented and executed successfully
