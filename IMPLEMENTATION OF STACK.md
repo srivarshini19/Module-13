@@ -1,4 +1,4 @@
-<img width="601" height="241" alt="image" src="https://github.com/user-attachments/assets/d610386f-d89c-4b6c-9f50-262abfb6bbd8" /># Exp.No:31  
+# Exp.No:31
 ## IMPLEMENTATION OF STACK
 
 ---
